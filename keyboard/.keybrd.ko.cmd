@@ -1,0 +1,1 @@
+cmd_/home/meenal/Desktop/ELDD/keyboard/keybrd.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/meenal/Desktop/ELDD/keyboard/keybrd.ko /home/meenal/Desktop/ELDD/keyboard/keybrd.o /home/meenal/Desktop/ELDD/keyboard/keybrd.mod.o;  true
