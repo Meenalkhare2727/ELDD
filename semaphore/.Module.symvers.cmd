@@ -1,0 +1,1 @@
+cmd_/home/meenal/Desktop/ELDD/semaphore/Module.symvers :=  sed 's/ko$$/o/'  /home/meenal/Desktop/ELDD/semaphore/modules.order | scripts/mod/modpost -m -a    -o /home/meenal/Desktop/ELDD/semaphore/Module.symvers -e -i Module.symvers -T - 

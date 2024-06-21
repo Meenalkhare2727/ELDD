@@ -1,0 +1,1 @@
+cmd_/home/meenal/Desktop/ELDD/semaphore/sema.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/meenal/Desktop/ELDD/semaphore/sema.ko /home/meenal/Desktop/ELDD/semaphore/sema.o /home/meenal/Desktop/ELDD/semaphore/sema.mod.o;  true
