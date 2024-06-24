@@ -7,7 +7,7 @@
 #include <linux/uaccess.h>
 
 static int state;
-static int gpio_pin = 49; // Change to the appropriate GPIO pin number
+static int gpio_pin = 49; 
 static struct kobject *led_kobj;
 
 static ssize_t state_show(struct kobject *kobj, struct kobj_attribute *attr, char *buf) {
@@ -33,7 +33,7 @@ static struct kobj_attribute state_attribute = __ATTR(state, 0660, state_show, s
 
 static struct attribute *attrs[] = {
     &state_attribute.attr,
-    NULL,   // Terminate the attribute list
+    
 };
 
 static struct attribute_group attr_group = {
@@ -43,23 +43,23 @@ static struct attribute_group attr_group = {
 static int __init led_init(void) {
     int retval;
 
-    // Check if the GPIO pin is valid
+    
     if (!gpio_is_valid(gpio_pin)) {
         pr_err("Invalid GPIO %d\n", gpio_pin);
         return -ENODEV;
     }
 
-    // Request the GPIO pin
+    
     retval = gpio_request(gpio_pin, "sysfs-led");
     if (retval) {
         pr_err("Failed to request GPIO %d\n", gpio_pin);
         return retval;
     }
 
-    // Set the GPIO pin as output
+    
     gpio_direction_output(gpio_pin, state);
 
-    // Create the kobject and add it to the kernel
+    
     led_kobj = kobject_create_and_add("led", kernel_kobj);
     if (!led_kobj) {
         gpio_free(gpio_pin);
@@ -67,7 +67,7 @@ static int __init led_init(void) {
         return -ENOMEM;
     }
 
-    // Create the files associated with this kobject
+    
     retval = sysfs_create_group(led_kobj, &attr_group);
     if (retval) {
         kobject_put(led_kobj);
@@ -81,7 +81,7 @@ static int __init led_init(void) {
 
 static void __exit led_exit(void) {
     kobject_put(led_kobj);
-    gpio_set_value(gpio_pin, 0); // Turn off the LED
+    gpio_set_value(gpio_pin, 0); 
     gpio_free(gpio_pin);
 }
 
@@ -89,6 +89,6 @@ module_init(led_init);
 module_exit(led_exit);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Yugandhar Narkhede");
+MODULE_AUTHOR("Meenal shrivastava");
 MODULE_DESCRIPTION("A simple sysfs-based GPIO driver for BBB");
 

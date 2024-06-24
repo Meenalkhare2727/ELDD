@@ -3,7 +3,7 @@
 #include <linux/device.h>
 #include <linux/fs.h>
 #include <linux/cdev.h>
-#include <linux/kfifo.h>
+#include <linux/kfifo.h>""
 #include "pchar_ioctl.h"
 
 static int pchar_open(struct inode *, struct file *);
@@ -137,7 +137,7 @@ static ssize_t pchar_write(struct file *pfile, const char *ubuf, size_t size, lo
 static long pchar_ioctl(struct file *pfile, unsigned int cmd, unsigned long param) {
     info_t info;
     int ret;
-    unsigned int len; // Declare all variables at the beginning of the block
+    unsigned int len; 
     unsigned char *temp_buf;
     unsigned int copied;
     
@@ -161,7 +161,7 @@ static long pchar_ioctl(struct file *pfile, unsigned int cmd, unsigned long para
    case FIFO_RESIZE:
         printk(KERN_INFO "%s: pchar_ioctl() resize fifo.\n", THIS_MODULE->name); 
         
-        // Initialize the variables at the beginning of the case block
+       
         len = kfifo_len(&buf);
         temp_buf = kmalloc(len, GFP_KERNEL);
         if (!temp_buf) {
@@ -169,7 +169,7 @@ static long pchar_ioctl(struct file *pfile, unsigned int cmd, unsigned long para
             return -ENOMEM;
         }
         
-        // Copy fifo data into that buffer - kfifo_out()
+        
         copied = kfifo_out(&buf, temp_buf, len);
         if (copied != len) {
             printk(KERN_ERR "%s: kfifo_out() failed to copy all data.\n", THIS_MODULE->name);
@@ -177,20 +177,20 @@ static long pchar_ioctl(struct file *pfile, unsigned int cmd, unsigned long para
             return -EIO;
         }
         
-        // Release kfifo memory - kfifo_free()
+        
         kfifo_free(&buf);
         
-        // Allocate kfifo with new size of 64 bytes- kfifo_alloc() with param
+        
   ret = kfifo_alloc(&buf, 64, GFP_KERNEL);
         if (ret) {
             kfree(temp_buf);
             ret = -ENOMEM;
             break;
         }
-        // Copy temp buffer data back to fifo - kfifo_in()
+        
         kfifo_in(&buf, temp_buf, len);
         
-        // Release temp buffer - kfree()
+        
         kfree(temp_buf);
         break;
     default:
@@ -204,6 +204,6 @@ module_init(pchar_init);
 module_exit(pchar_exit);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Yugandhar Narkhede");
+MODULE_AUTHOR("Meenal shrivastava");
 MODULE_DESCRIPTION("Simple pchar driver with kfifo as device.");
 
