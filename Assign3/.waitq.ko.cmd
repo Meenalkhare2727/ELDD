@@ -1,1 +1,1 @@
-cmd_/home/meenal/Desktop/ELDD/Assign3/waitq.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/meenal/Desktop/ELDD/Assign3/waitq.ko /home/meenal/Desktop/ELDD/Assign3/waitq.o /home/meenal/Desktop/ELDD/Assign3/waitq.mod.o;  true
+cmd_/home/meenal/Desktop/elddGITPush/ELDD/Assign3/waitq.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/meenal/Desktop/elddGITPush/ELDD/Assign3/waitq.ko /home/meenal/Desktop/elddGITPush/ELDD/Assign3/waitq.o /home/meenal/Desktop/elddGITPush/ELDD/Assign3/waitq.mod.o;  true

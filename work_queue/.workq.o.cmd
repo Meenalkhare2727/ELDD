@@ -1,8 +1,8 @@
-cmd_/home/meenal/Desktop/elddGITPush/ELDD/Assign3/waitq.o := gcc -Wp,-MMD,/home/meenal/Desktop/elddGITPush/ELDD/Assign3/.waitq.o.d -nostdinc -I./arch/x86/include -I./arch/x86/include/generated  -I./include -I./arch/x86/include/uapi -I./arch/x86/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/compiler-version.h -include ./include/linux/kconfig.h -include ./include/linux/compiler_types.h -D__KERNEL__ -fmacro-prefix-map=./= -Wall -Wundef -Werror=strict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -fno-PIE -Werror=implicit-function-declaration -Werror=implicit-int -Werror=return-type -Wno-format-security -std=gnu11 -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -fcf-protection=none -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -Wno-sign-compare -fno-asynchronous-unwind-tables -mindirect-branch=thunk-extern -mindirect-branch-register -mindirect-branch-cs-prefix -mfunction-return=thunk-extern -fno-jump-tables -mharden-sls=all -fno-delete-null-pointer-checks -Wno-frame-address -Wno-format-truncation -Wno-format-overflow -Wno-address-of-packed-member -O2 -fno-allow-store-data-races -Wframe-larger-than=1024 -fstack-protector-strong -Wno-main -Wno-unused-but-set-variable -Wno-unused-const-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-stack-clash-protection -fzero-call-used-regs=used-gpr -pg -mrecord-mcount -mfentry -DCC_USING_FENTRY -Wdeclaration-after-statement -Wvla -Wno-pointer-sign -Wcast-function-type -Wno-stringop-truncation -Wno-stringop-overflow -Wno-restrict -Wno-maybe-uninitialized -Wno-array-bounds -Wno-alloc-size-larger-than -Wimplicit-fallthrough=5 -fno-strict-overflow -fno-stack-check -fconserve-stack -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init -Wno-packed-not-aligned -g -gdwarf-5  -fsanitize=bounds -fsanitize=shift -fsanitize=bool -fsanitize=enum  -DMODULE  -DKBUILD_BASENAME='"waitq"' -DKBUILD_MODNAME='"waitq"' -D__KBUILD_MODNAME=kmod_waitq -c -o /home/meenal/Desktop/elddGITPush/ELDD/Assign3/waitq.o /home/meenal/Desktop/elddGITPush/ELDD/Assign3/waitq.c   ; ./tools/objtool/objtool --hacks=jump_label --hacks=noinstr --retpoline --rethunk --sls --stackval --static-call --uaccess   --module /home/meenal/Desktop/elddGITPush/ELDD/Assign3/waitq.o
+cmd_/home/meenal/Desktop/elddGITPush/ELDD/work_queue/workq.o := gcc -Wp,-MMD,/home/meenal/Desktop/elddGITPush/ELDD/work_queue/.workq.o.d -nostdinc -I./arch/x86/include -I./arch/x86/include/generated  -I./include -I./arch/x86/include/uapi -I./arch/x86/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/compiler-version.h -include ./include/linux/kconfig.h -include ./include/linux/compiler_types.h -D__KERNEL__ -fmacro-prefix-map=./= -Wall -Wundef -Werror=strict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -fno-PIE -Werror=implicit-function-declaration -Werror=implicit-int -Werror=return-type -Wno-format-security -std=gnu11 -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -fcf-protection=none -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -Wno-sign-compare -fno-asynchronous-unwind-tables -mindirect-branch=thunk-extern -mindirect-branch-register -mindirect-branch-cs-prefix -mfunction-return=thunk-extern -fno-jump-tables -mharden-sls=all -fno-delete-null-pointer-checks -Wno-frame-address -Wno-format-truncation -Wno-format-overflow -Wno-address-of-packed-member -O2 -fno-allow-store-data-races -Wframe-larger-than=1024 -fstack-protector-strong -Wno-main -Wno-unused-but-set-variable -Wno-unused-const-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-stack-clash-protection -fzero-call-used-regs=used-gpr -pg -mrecord-mcount -mfentry -DCC_USING_FENTRY -Wdeclaration-after-statement -Wvla -Wno-pointer-sign -Wcast-function-type -Wno-stringop-truncation -Wno-stringop-overflow -Wno-restrict -Wno-maybe-uninitialized -Wno-array-bounds -Wno-alloc-size-larger-than -Wimplicit-fallthrough=5 -fno-strict-overflow -fno-stack-check -fconserve-stack -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init -Wno-packed-not-aligned -g -gdwarf-5  -fsanitize=bounds -fsanitize=shift -fsanitize=bool -fsanitize=enum  -DMODULE  -DKBUILD_BASENAME='"workq"' -DKBUILD_MODNAME='"workq"' -D__KBUILD_MODNAME=kmod_workq -c -o /home/meenal/Desktop/elddGITPush/ELDD/work_queue/workq.o /home/meenal/Desktop/elddGITPush/ELDD/work_queue/workq.c   ; ./tools/objtool/objtool --hacks=jump_label --hacks=noinstr --retpoline --rethunk --sls --stackval --static-call --uaccess   --module /home/meenal/Desktop/elddGITPush/ELDD/work_queue/workq.o
 
-source_/home/meenal/Desktop/elddGITPush/ELDD/Assign3/waitq.o := /home/meenal/Desktop/elddGITPush/ELDD/Assign3/waitq.c
+source_/home/meenal/Desktop/elddGITPush/ELDD/work_queue/workq.o := /home/meenal/Desktop/elddGITPush/ELDD/work_queue/workq.c
 
-deps_/home/meenal/Desktop/elddGITPush/ELDD/Assign3/waitq.o := \
+deps_/home/meenal/Desktop/elddGITPush/ELDD/work_queue/workq.o := \
   include/linux/compiler-version.h \
     $(wildcard include/config/CC_VERSION_TEXT) \
   include/linux/kconfig.h \
@@ -992,89 +992,30 @@ deps_/home/meenal/Desktop/elddGITPush/ELDD/Assign3/waitq.o := \
   include/uapi/linux/quota.h \
   include/linux/nfs_fs_i.h \
   include/linux/cdev.h \
-  include/linux/kfifo.h \
-  include/linux/scatterlist.h \
-    $(wildcard include/config/NEED_SG_DMA_LENGTH) \
-    $(wildcard include/config/PCI_P2PDMA) \
-    $(wildcard include/config/DEBUG_SG) \
-    $(wildcard include/config/SGL_ALLOC) \
-    $(wildcard include/config/ARCH_NO_SG_CHAIN) \
-    $(wildcard include/config/SG_POOL) \
-  include/linux/mm.h \
-    $(wildcard include/config/HAVE_ARCH_MMAP_RND_BITS) \
-    $(wildcard include/config/HAVE_ARCH_MMAP_RND_COMPAT_BITS) \
-    $(wildcard include/config/ARCH_USES_HIGH_VMA_FLAGS) \
-    $(wildcard include/config/ARCH_HAS_PKEYS) \
-    $(wildcard include/config/PPC) \
-    $(wildcard include/config/PARISC) \
-    $(wildcard include/config/SPARC64) \
-    $(wildcard include/config/ARM64) \
-    $(wildcard include/config/ARM64_MTE) \
-    $(wildcard include/config/HAVE_ARCH_USERFAULTFD_MINOR) \
-    $(wildcard include/config/SHMEM) \
-    $(wildcard include/config/MIGRATION) \
-    $(wildcard include/config/ARCH_HAS_PTE_SPECIAL) \
-    $(wildcard include/config/ARCH_HAS_PTE_DEVMAP) \
-    $(wildcard include/config/DEBUG_VM_RB) \
-    $(wildcard include/config/HAVE_FAST_GUP) \
-    $(wildcard include/config/PAGE_POISONING) \
-    $(wildcard include/config/INIT_ON_ALLOC_DEFAULT_ON) \
-    $(wildcard include/config/INIT_ON_FREE_DEFAULT_ON) \
-    $(wildcard include/config/DEBUG_PAGEALLOC) \
-    $(wildcard include/config/HUGETLBFS) \
-    $(wildcard include/config/MAPPING_DIRTY_HELPERS) \
-    $(wildcard include/config/ANON_VMA_NAME) \
-  include/linux/mmap_lock.h \
-  include/linux/page_ext.h \
-  include/linux/stacktrace.h \
-    $(wildcard include/config/ARCH_STACKWALK) \
-    $(wildcard include/config/STACKTRACE) \
-    $(wildcard include/config/HAVE_RELIABLE_STACKTRACE) \
-  include/linux/stackdepot.h \
-    $(wildcard include/config/STACKDEPOT) \
-  include/linux/page_ref.h \
-    $(wildcard include/config/DEBUG_PAGE_REF) \
-  include/linux/sizes.h \
-  include/linux/pgtable.h \
-    $(wildcard include/config/HIGHPTE) \
-    $(wildcard include/config/ARCH_HAS_NONLEAF_PMD_YOUNG) \
-    $(wildcard include/config/GUP_GET_PTE_LOW_HIGH) \
-    $(wildcard include/config/HAVE_ARCH_TRANSPARENT_HUGEPAGE_PUD) \
-    $(wildcard include/config/HAVE_ARCH_SOFT_DIRTY) \
-    $(wildcard include/config/ARCH_ENABLE_THP_MIGRATION) \
-    $(wildcard include/config/HAVE_ARCH_HUGE_VMAP) \
-    $(wildcard include/config/X86_ESPFIX64) \
-  arch/x86/include/asm/pgtable.h \
-    $(wildcard include/config/DEBUG_WX) \
-    $(wildcard include/config/PAGE_TABLE_CHECK) \
-  arch/x86/include/asm/pkru.h \
-  arch/x86/include/asm/fpu/api.h \
-    $(wildcard include/config/X86_DEBUG_FPU) \
-  arch/x86/include/asm/coco.h \
-  include/asm-generic/pgtable_uffd.h \
-  include/linux/page_table_check.h \
-  arch/x86/include/asm/pgtable_64.h \
-  arch/x86/include/asm/fixmap.h \
-    $(wildcard include/config/PROVIDE_OHCI1394_DMA_INIT) \
-    $(wildcard include/config/X86_IO_APIC) \
-    $(wildcard include/config/PCI_MMCONFIG) \
-    $(wildcard include/config/ACPI_APEI_GHES) \
-    $(wildcard include/config/INTEL_TXT) \
-  arch/x86/include/uapi/asm/vsyscall.h \
-  include/asm-generic/fixmap.h \
-  arch/x86/include/asm/pgtable-invert.h \
-  include/linux/memremap.h \
-    $(wildcard include/config/DEVICE_PRIVATE) \
-  include/linux/huge_mm.h \
-  include/linux/sched/coredump.h \
-    $(wildcard include/config/CORE_DUMP_DEFAULT_ELF_HEADERS) \
-  include/linux/vmstat.h \
-    $(wildcard include/config/VM_EVENT_COUNTERS) \
-    $(wildcard include/config/DEBUG_TLBFLUSH) \
-  include/linux/vm_event_item.h \
-    $(wildcard include/config/MEMORY_BALLOON) \
-    $(wildcard include/config/BALLOON_COMPACTION) \
-    $(wildcard include/config/ZSWAP) \
+  include/linux/gpio.h \
+    $(wildcard include/config/GPIOLIB) \
+    $(wildcard include/config/ARCH_HAVE_CUSTOM_GPIO_H) \
+  include/asm-generic/gpio.h \
+    $(wildcard include/config/ARCH_NR_GPIO) \
+  include/linux/gpio/driver.h \
+    $(wildcard include/config/IRQ_DOMAIN_HIERARCHY) \
+    $(wildcard include/config/GPIO_GENERIC) \
+    $(wildcard include/config/GPIOLIB_IRQCHIP) \
+    $(wildcard include/config/OF_GPIO) \
+  include/linux/irq.h \
+    $(wildcard include/config/GENERIC_IRQ_EFFECTIVE_AFF_MASK) \
+    $(wildcard include/config/GENERIC_IRQ_IPI) \
+    $(wildcard include/config/DEPRECATED_IRQ_CPU_ONOFFLINE) \
+    $(wildcard include/config/GENERIC_IRQ_MIGRATION) \
+    $(wildcard include/config/GENERIC_PENDING_IRQ) \
+    $(wildcard include/config/HARDIRQS_SW_RESEND) \
+    $(wildcard include/config/GENERIC_IRQ_LEGACY) \
+    $(wildcard include/config/GENERIC_IRQ_MULTI_HANDLER) \
+  include/linux/irqhandler.h \
+  include/linux/irqreturn.h \
+  include/linux/io.h \
+    $(wildcard include/config/HAS_IOPORT_MAP) \
+    $(wildcard include/config/PCI) \
   arch/x86/include/asm/io.h \
     $(wildcard include/config/MTRR) \
     $(wildcard include/config/X86_PAT) \
@@ -1083,9 +1024,7 @@ deps_/home/meenal/Desktop/elddGITPush/ELDD/Assign3/waitq.o := \
     $(wildcard include/config/GENERIC_EARLY_IOREMAP) \
   arch/x86/include/asm/shared/io.h \
   include/asm-generic/iomap.h \
-    $(wildcard include/config/HAS_IOPORT_MAP) \
   include/asm-generic/pci_iomap.h \
-    $(wildcard include/config/PCI) \
     $(wildcard include/config/NO_GENERIC_PCI_IOPORT_MAP) \
     $(wildcard include/config/GENERIC_PCI_IOMAP) \
   include/asm-generic/io.h \
@@ -1098,10 +1037,75 @@ deps_/home/meenal/Desktop/elddGITPush/ELDD/Assign3/waitq.o := \
   include/linux/vmalloc.h \
     $(wildcard include/config/HAVE_ARCH_HUGE_VMALLOC) \
   arch/x86/include/asm/vmalloc.h \
+    $(wildcard include/config/HAVE_ARCH_HUGE_VMAP) \
   arch/x86/include/asm/pgtable_areas.h \
+  arch/x86/include/asm/irq.h \
+    $(wildcard include/config/HAVE_KVM) \
+  arch/x86/include/asm/irq_vectors.h \
+    $(wildcard include/config/HYPERV) \
+    $(wildcard include/config/X86_IO_APIC) \
+    $(wildcard include/config/PCI_MSI) \
+  arch/x86/include/generated/asm/irq_regs.h \
+  include/asm-generic/irq_regs.h \
+  include/linux/irqdesc.h \
+    $(wildcard include/config/GENERIC_IRQ_DEBUGFS) \
+    $(wildcard include/config/SPARSE_IRQ) \
+    $(wildcard include/config/IRQ_DOMAIN) \
+  arch/x86/include/asm/hw_irq.h \
+  include/linux/profile.h \
+    $(wildcard include/config/PROFILING) \
+  arch/x86/include/asm/sections.h \
+  include/asm-generic/sections.h \
+    $(wildcard include/config/HAVE_FUNCTION_DESCRIPTORS) \
+  include/linux/irqchip/chained_irq.h \
+  include/linux/irqdomain.h \
+    $(wildcard include/config/IRQ_DOMAIN_NOMAP) \
+  include/linux/of.h \
+    $(wildcard include/config/OF_DYNAMIC) \
+    $(wildcard include/config/SPARC) \
+    $(wildcard include/config/OF_PROMTREE) \
+    $(wildcard include/config/OF_KOBJ) \
+    $(wildcard include/config/OF_NUMA) \
+    $(wildcard include/config/OF_OVERLAY) \
+  include/linux/mod_devicetable.h \
+  include/linux/property.h \
+  include/linux/pinctrl/pinctrl.h \
+    $(wildcard include/config/GENERIC_PINCONF) \
+  include/linux/seq_file.h \
+  include/linux/string_helpers.h \
+  include/linux/ctype.h \
+  include/linux/pinctrl/pinctrl-state.h \
+  include/linux/pinctrl/devinfo.h \
+  include/linux/pinctrl/consumer.h \
+  include/linux/pinctrl/pinconf-generic.h \
+  include/linux/pinctrl/machine.h \
+  arch/x86/include/asm/msi.h \
+  arch/x86/include/asm/irqdomain.h \
+  include/linux/gpio/consumer.h \
+    $(wildcard include/config/GPIO_SYSFS) \
+  include/linux/interrupt.h \
+    $(wildcard include/config/IRQ_FORCED_THREADING) \
+    $(wildcard include/config/GENERIC_IRQ_PROBE) \
+    $(wildcard include/config/IRQ_TIMINGS) \
+  include/linux/hardirq.h \
+  include/linux/context_tracking_state.h \
+    $(wildcard include/config/CONTEXT_TRACKING_USER) \
+    $(wildcard include/config/CONTEXT_TRACKING) \
+  include/linux/ftrace_irq.h \
+    $(wildcard include/config/HWLAT_TRACER) \
+    $(wildcard include/config/OSNOISE_TRACER) \
+  include/linux/vtime.h \
+    $(wildcard include/config/VIRT_CPU_ACCOUNTING) \
+    $(wildcard include/config/IRQ_TIME_ACCOUNTING) \
+  arch/x86/include/asm/hardirq.h \
+    $(wildcard include/config/KVM_INTEL) \
+    $(wildcard include/config/X86_THERMAL_VECTOR) \
+    $(wildcard include/config/X86_MCE_THRESHOLD) \
+    $(wildcard include/config/X86_MCE_AMD) \
+    $(wildcard include/config/X86_HV_CALLBACK_VECTOR) \
 
-/home/meenal/Desktop/elddGITPush/ELDD/Assign3/waitq.o: $(deps_/home/meenal/Desktop/elddGITPush/ELDD/Assign3/waitq.o)
+/home/meenal/Desktop/elddGITPush/ELDD/work_queue/workq.o: $(deps_/home/meenal/Desktop/elddGITPush/ELDD/work_queue/workq.o)
 
-$(deps_/home/meenal/Desktop/elddGITPush/ELDD/Assign3/waitq.o):
+$(deps_/home/meenal/Desktop/elddGITPush/ELDD/work_queue/workq.o):
 
-/home/meenal/Desktop/elddGITPush/ELDD/Assign3/waitq.o: $(wildcard ./tools/objtool/objtool)
+/home/meenal/Desktop/elddGITPush/ELDD/work_queue/workq.o: $(wildcard ./tools/objtool/objtool)

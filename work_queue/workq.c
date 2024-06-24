@@ -6,6 +6,7 @@
 #include <linux/gpio.h>
 #include <linux/uaccess.h>
 #include <linux/interrupt.h>
+#include <linux/workqueue.h>
 
 #define LED_GPIO    49
 #define SWITCH_GPIO    115
@@ -22,7 +23,8 @@ static dev_t devno;
 static struct class *pclass;
 static struct cdev cdev;
 static int irq;
-struct static workqueue_struct workqueue;
+static struct workqueue_struct *workqueue;
+static struct work_struct work;
 
 static struct file_operations bbb_gpio_fops = {
     .owner = THIS_MODULE,
@@ -32,19 +34,16 @@ static struct file_operations bbb_gpio_fops = {
     .write = bbb_gpio_write
 };
 
-struct workqueue_struct *create_workqueue(const char *name);
-      
-  
-static void tasklet_handler(unsigned long param) {
-	led_state = !led_state;
-	gpio_set_value(LED_GPIO, led_state);	
-    printk(KERN_INFO "%s: tasklet_handler() called.\n", THIS_MODULE->name);
+static void work_handler(struct work_struct *work) {
+    led_state = !led_state;
+    gpio_set_value(LED_GPIO, led_state);    
+    printk(KERN_INFO "%s: work_handler() called.\n", THIS_MODULE->name);
 }
 
 static irqreturn_t switch_isr(int irq, void *param) {
     printk(KERN_INFO "%s: switch_isr() called.\n", THIS_MODULE->name);
-	tasklet_schedule(&tasklet);
-	return IRQ_HANDLED;
+    queue_work(workqueue, &work);
+    return IRQ_HANDLED;
 }
 
 static __init int bbb_gpio_init(void) {
@@ -131,23 +130,26 @@ static __init int bbb_gpio_init(void) {
     }
     printk(KERN_INFO "%s: GPIO pin %d direction set to INPUT.\n", THIS_MODULE->name, SWITCH_GPIO);
     
-	// set debounce -- optional
-
-	// get the gpio interrupt number
-	irq = gpio_to_irq(SWITCH_GPIO);
-	ret = request_irq(irq, switch_isr, IRQF_TRIGGER_RISING, "bbb_switch", NULL);
-	if(ret != 0) {
+    // Get the GPIO interrupt number
+    irq = gpio_to_irq(SWITCH_GPIO);
+    ret = request_irq(irq, switch_isr, IRQF_TRIGGER_RISING, "bbb_switch", NULL);
+    if(ret != 0) {
         printk(KERN_ERR "%s: GPIO pin %d ISR registration failed.\n", THIS_MODULE->name, SWITCH_GPIO);
-        goto switch_gpio_direction_failed;		
-	}
-    printk(KERN_INFO "%s: GPIO pin %d registerd ISR on irq line %d.\n", THIS_MODULE->name, SWITCH_GPIO, irq);
+        goto switch_gpio_direction_failed;        
+    }
+    printk(KERN_INFO "%s: GPIO pin %d registered ISR on irq line %d.\n", THIS_MODULE->name, SWITCH_GPIO, irq);
 
-	// initialize tasklet
-	tasklet_init(&tasklet, tasklet_handler, 0);
-    printk(KERN_INFO "%s: tasklet is initialized.\n", THIS_MODULE->name);
+    // Initialize workqueue
+    workqueue = create_singlethread_workqueue("bbb_gpio_workqueue");
+    if (!workqueue) {
+        printk(KERN_ERR "%s: create_singlethread_workqueue() failed.\n", THIS_MODULE->name);
+        ret = -ENOMEM;
+        goto switch_gpio_direction_failed;
+    }
+    INIT_WORK(&work, work_handler);
+    printk(KERN_INFO "%s: workqueue is initialized.\n", THIS_MODULE->name);
 
-   INIT_WORK(struct work_struct *work, void (*function)(void *), v);
-	return 0;
+    return 0;
 
 switch_gpio_direction_failed:
     gpio_free(SWITCH_GPIO);
@@ -168,9 +170,11 @@ alloc_chrdev_region_failed:
 
 static __exit void bbb_gpio_exit(void) {
     printk(KERN_INFO "%s: bbb_gpio_exit() called.\n", THIS_MODULE->name);
+    destroy_workqueue(workqueue);
+    printk(KERN_INFO "%s: workqueue destroyed.\n", THIS_MODULE->name);
     free_irq(irq, NULL);
     printk(KERN_INFO "%s: GPIO pin %d ISR released.\n", THIS_MODULE->name, SWITCH_GPIO);
-	gpio_free(SWITCH_GPIO);
+    gpio_free(SWITCH_GPIO);
     printk(KERN_INFO "%s: GPIO pin %d released.\n", THIS_MODULE->name, SWITCH_GPIO);
     gpio_free(LED_GPIO);
     printk(KERN_INFO "%s: GPIO pin %d released.\n", THIS_MODULE->name, LED_GPIO);
@@ -198,7 +202,7 @@ static int bbb_gpio_close(struct inode *pinode, struct file *pfile) {
 static ssize_t bbb_gpio_read(struct file *pfile, char *ubuf, size_t size, loff_t *poffset) {
     int ret, switch_state;
     char kbuf[4];
-	switch_state = gpio_get_value(SWITCH_GPIO);
+    switch_state = gpio_get_value(SWITCH_GPIO);
     printk(KERN_INFO "%s: bbb_gpio_read() called.\n", THIS_MODULE->name);
     sprintf(kbuf, "%d\n", switch_state);
     ret = 2 - copy_to_user(ubuf, kbuf, 2);
@@ -215,14 +219,14 @@ static ssize_t bbb_gpio_write(struct file *pfile, const char *ubuf, size_t size,
         if(kbuf[0] == '1') {
             led_state = 1;
             gpio_set_value(LED_GPIO, 1);
-            printk(KERN_INFO "%s: GPIO pin %d LED ON.\n", THIS_MODULE->name, LED_GPIO);
+            printk(KERN_INFO "%s: GPIO pin %d LED ON.\n", THIS_MODULE->name);
         } else if(kbuf[0] == '0') {
             led_state = 0;
             gpio_set_value(LED_GPIO, 0);
-            printk(KERN_INFO "%s: GPIO pin %d LED OFF.\n", THIS_MODULE->name, LED_GPIO);
+            printk(KERN_INFO "%s: GPIO pin %d LED OFF.\n", THIS_MODULE->name);
         }
         else
-            printk(KERN_INFO "%s: GPIO pin %d LED NO state change.\n", THIS_MODULE->name, LED_GPIO);
+            printk(KERN_INFO "%s: GPIO pin %d LED NO state change.\n", THIS_MODULE->name);
     } 
     return size;
 }
@@ -231,6 +235,6 @@ module_init(bbb_gpio_init);
 module_exit(bbb_gpio_exit);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Nilesh Ghule <nilesh@sunbeaminfo.com>");
-MODULE_DESCRIPTION("Simple bbb_gpio driver with kfifo as device.");
+MODULE_AUTHOR("Meenal shrivastava");
+MODULE_DESCRIPTION("Simple bbb_gpio driver with workqueue.");
 
